@@ -1,19 +1,26 @@
 import { ToastContainer } from 'react-toastify';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Header from './components/Header';
 import Router from './routes';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 function App() {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="App font-mono h-screen">
-        <Header />
+      <Auth0Provider
+          domain={import.meta.env.VITE_AUTH0_DOMAIN}
+          clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
+          authorizationParams={{
+            redirect_uri: window.location.origin
+          }}
+        >
+      <div className="bg-white dark:bg-white">
         <Router />
       </div>
       <ToastContainer />
+      </Auth0Provider>
     </QueryClientProvider>
   );
 }

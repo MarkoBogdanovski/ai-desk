@@ -16,16 +16,10 @@
     "noEmit": true,
     "types": ["node", "jest"],
     "jsx": "react-jsx",
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/pages/*": ["pages/*"],
-      "@/lib/*": ["lib/*"],
-      "@/types/*": ["types/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/store/*": ["store/*"],
-      "@/services/*": ["services/*"]
+      "@/*": ["./src/*"],
     }
   },
-  "include": ["./src"]
+  "include": ["./src", "vite-env.d.ts"]
 }
